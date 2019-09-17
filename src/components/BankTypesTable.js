@@ -8,6 +8,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import Dropdown from "./Dropdown";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,17 +32,21 @@ const BankTypesTable = props => {
             <TableCell>Date</TableCell>
             <TableCell align="right">Name</TableCell>
             <TableCell align="right">Amount</TableCell>
+            <TableCell align="right">Expense Type</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {props.transactions.map((transaction, i) =>
-            transaction.type ? null : (
+            transaction.type === "deposit" ? null : (
               <TableRow key={i}>
                 <TableCell component="th" scope="row">
                   {transaction.date}
                 </TableCell>
                 <TableCell align="right">{transaction.name}</TableCell>
-                <TableCell align="right">{transaction.amount}</TableCell>
+                <TableCell align="right">${transaction.amount}</TableCell>
+                <TableCell align="right">
+                  <Dropdown />
+                </TableCell>
               </TableRow>
             )
           )}

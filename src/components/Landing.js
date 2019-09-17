@@ -1,13 +1,12 @@
 import React from "react";
+import BankTypesTable from "./BankTypesTable";
 
 const Landing = props => {
-
-    return(
-        <>
-            <h1>Hello World</h1>
-        </>
-    )
-
-}
+  return (
+    <>
+      <BankTypesTable />
+    </>
+  );
+};
 
 export default Landing;

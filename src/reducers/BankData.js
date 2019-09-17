@@ -8,8 +8,8 @@ const INITIAL_STATE = {
     },
     {
       date: "01/20/2019",
-      name: "PG&E",
-      amount: 50.0,
+      name: "At&t",
+      amount: 100.0,
       type: ""
     },
     {

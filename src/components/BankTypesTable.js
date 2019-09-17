@@ -11,18 +11,11 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 const columns = [
-  { id: "name", label: "Name", minWidth: 200 },
-  { id: "code", label: "ISO\u00a0Code", minWidth: 100 },
+  { id: "date", label: "Date", minWidth: 200 },
+  { id: "name", label: "Name", minWidth: 100 },
   {
-    id: "population",
-    label: "Population",
-    minWidth: 120,
-    align: "right",
-    format: value => value.toLocaleString()
-  },
-  {
-    id: "size",
-    label: "Size\u00a0(km\u00b2)",
+    id: "amount",
+    label: "Amount",
     minWidth: 120,
     align: "right",
     format: value => value.toLocaleString()

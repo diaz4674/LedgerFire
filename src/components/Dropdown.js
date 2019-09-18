@@ -59,7 +59,7 @@ const CustomizedSelects = props => {
 
   const handleChange = async event => {
     await setexpenseName(event.target.value);
-    props.expenseType(event.target.value);
+    props.expenseType(event.target.value, props.transactionKey);
   };
 
   return (

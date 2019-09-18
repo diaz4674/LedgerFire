@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 const BankTypesTable = props => {
   const classes = useStyles();
 
-  const type = type => {
+  const type = (type, key) => {
     if (
       (type === 10) |
       (type === 20) |
@@ -32,7 +32,13 @@ const BankTypesTable = props => {
       (type === 40) |
       (type === 130)
     ) {
-      console.log("Variable");
+      props.updateData({
+        date: props.transactions[key].date,
+        name: props.transactions[key].name,
+        amount: props.transactions[key].amount,
+        type: props.transactions[key].type,
+        expense: "Variable"
+      });
     } else if (
       (type === 50) |
       (type === 60) |
@@ -43,10 +49,15 @@ const BankTypesTable = props => {
       (type === 110) |
       (type === 120)
     ) {
-      console.log("Fixed");
+      props.updateData({
+        date: props.transactions[key].date,
+        name: props.transactions[key].name,
+        amount: props.transactions[key].amount,
+        type: props.transactions[key].type,
+        expense: "Fixed"
+      });
     }
   };
-
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
@@ -68,7 +79,7 @@ const BankTypesTable = props => {
                 <TableCell align="right">{transaction.name}</TableCell>
                 <TableCell align="right">${transaction.amount}</TableCell>
                 <TableCell align="center">
-                  <Dropdown expenseType={type} />
+                  <Dropdown expenseType={type} transactionKey={i} />
                 </TableCell>
               </TableRow>
             )

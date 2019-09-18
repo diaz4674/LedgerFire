@@ -24,6 +24,30 @@ const useStyles = makeStyles(theme => ({
 const BankTypesTable = props => {
   const classes = useStyles();
 
+  const type = type => {
+    console.log(type);
+    if (
+      (type === 10) |
+      (type === 20) |
+      (type === 30) |
+      (type === 40) |
+      (type === 130)
+    ) {
+      console.log("Variable");
+    } else if (
+      (type === 50) |
+      (type === 60) |
+      (type === 70) |
+      (type === 80) |
+      (type === 90) |
+      (type === 100) |
+      (type === 110) |
+      (type === 120)
+    ) {
+      console.log("Fixed");
+    }
+  };
+
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
@@ -45,7 +69,7 @@ const BankTypesTable = props => {
                 <TableCell align="right">{transaction.name}</TableCell>
                 <TableCell align="right">${transaction.amount}</TableCell>
                 <TableCell align="right">
-                  <Dropdown />
+                  <Dropdown expenseType={type} />
                 </TableCell>
               </TableRow>
             )

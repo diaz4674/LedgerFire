@@ -4,7 +4,6 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import NativeSelect from "@material-ui/core/NativeSelect";
 import InputBase from "@material-ui/core/InputBase";
 
 const BootstrapInput = withStyles(theme => ({
@@ -52,37 +51,69 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function CustomizedSelects() {
+const CustomizedSelects = props => {
   const classes = useStyles();
+  const [expenseName, setexpenseName] = React.useState("");
   const [expenseType, setexpenseType] = React.useState("");
-  const handleChange = event => {
-    setexpenseType(event.target.value);
+
+  const handleChange = async event => {
+    setexpenseName(event.target.value);
+    props.expenseType(event.target.value);
   };
+
   return (
     <form className={classes.root} autoComplete="off">
       <FormControl className={classes.margin}>
-        <InputLabel htmlFor="age-customized-select">Type</InputLabel>
+        <InputLabel htmlFor="expense-type">Type</InputLabel>
         <Select
-          value={expenseType}
+          value={expenseName}
           onChange={handleChange}
-          input={<BootstrapInput name="age" id="age-customized-select" />}
+          input={
+            <BootstrapInput name={expenseType} id="expense-customized-select" />
+          }
         >
           {/* <MenuItem value="" /> */}
           <MenuItem value={10}>Inventory</MenuItem>
-          <MenuItem value={20}>Officer's Salaries</MenuItem>
-          <MenuItem value={30}>Payroll</MenuItem>
-          <MenuItem value={40}>Utilities</MenuItem>
-          <MenuItem value={50}>Dues and Subscriptions</MenuItem>
-          <MenuItem value={60}>Interest</MenuItem>
-          <MenuItem value={70}>Internet</MenuItem>
-          <MenuItem value={80}>Rent</MenuItem>
-          <MenuItem value={90}>Telephone Cell</MenuItem>
-          <MenuItem value={100}>Telephone Land</MenuItem>
-          <MenuItem value={200}>Taxes-Local</MenuItem>
-          <MenuItem value={300}>Taxes-Payroll</MenuItem>
-          <MenuItem value={400}>Taxes-Sales</MenuItem>
+          <MenuItem value={20} selected="Variable">
+            Officer's Salaries
+          </MenuItem>
+          <MenuItem value={30} selected="Variable">
+            Payroll
+          </MenuItem>
+          <MenuItem value={40} type="Variable">
+            Utilities
+          </MenuItem>
+          <MenuItem value={50} type="Fixed">
+            Dues and Subscriptions
+          </MenuItem>
+          <MenuItem value={60} type="Fixed">
+            Interest
+          </MenuItem>
+          <MenuItem value={70} type="Fixed">
+            Internet
+          </MenuItem>
+          <MenuItem value={80} type="Fixed">
+            Rent
+          </MenuItem>
+          <MenuItem value={90} type="Fixed">
+            Telephone Cell
+          </MenuItem>
+          <MenuItem value={100} type="Fixed">
+            Telephone Land
+          </MenuItem>
+          <MenuItem value={110} type="Fixed">
+            Taxes-Local
+          </MenuItem>
+          <MenuItem value={120} type="Fixed">
+            Taxes-Payroll
+          </MenuItem>
+          <MenuItem value={130} type="Variable">
+            Taxes-Sales
+          </MenuItem>
         </Select>
       </FormControl>
     </form>
   );
-}
+};
+
+export default CustomizedSelects;

@@ -25,7 +25,6 @@ const BankTypesTable = props => {
   const classes = useStyles();
 
   const type = type => {
-    console.log(type);
     if (
       (type === 10) |
       (type === 20) |
@@ -56,7 +55,7 @@ const BankTypesTable = props => {
             <TableCell>Date</TableCell>
             <TableCell align="right">Name</TableCell>
             <TableCell align="right">Amount</TableCell>
-            <TableCell align="right">Expense Type</TableCell>
+            <TableCell align="center">Expense Type</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -68,7 +67,7 @@ const BankTypesTable = props => {
                 </TableCell>
                 <TableCell align="right">{transaction.name}</TableCell>
                 <TableCell align="right">${transaction.amount}</TableCell>
-                <TableCell align="right">
+                <TableCell align="center">
                   <Dropdown expenseType={type} />
                 </TableCell>
               </TableRow>

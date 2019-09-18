@@ -47,7 +47,8 @@ const useStyles = makeStyles(theme => ({
     flexWrap: "wrap"
   },
   margin: {
-    margin: theme.spacing(1)
+    // margin: theme.spacing(1)
+    margin: "0 auto"
   }
 }));
 
@@ -57,7 +58,7 @@ const CustomizedSelects = props => {
   const [expenseType, setexpenseType] = React.useState("");
 
   const handleChange = async event => {
-    setexpenseName(event.target.value);
+    await setexpenseName(event.target.value);
     props.expenseType(event.target.value);
   };
 
@@ -74,42 +75,18 @@ const CustomizedSelects = props => {
         >
           {/* <MenuItem value="" /> */}
           <MenuItem value={10}>Inventory</MenuItem>
-          <MenuItem value={20} selected="Variable">
-            Officer's Salaries
-          </MenuItem>
-          <MenuItem value={30} selected="Variable">
-            Payroll
-          </MenuItem>
-          <MenuItem value={40} type="Variable">
-            Utilities
-          </MenuItem>
-          <MenuItem value={50} type="Fixed">
-            Dues and Subscriptions
-          </MenuItem>
-          <MenuItem value={60} type="Fixed">
-            Interest
-          </MenuItem>
-          <MenuItem value={70} type="Fixed">
-            Internet
-          </MenuItem>
-          <MenuItem value={80} type="Fixed">
-            Rent
-          </MenuItem>
-          <MenuItem value={90} type="Fixed">
-            Telephone Cell
-          </MenuItem>
-          <MenuItem value={100} type="Fixed">
-            Telephone Land
-          </MenuItem>
-          <MenuItem value={110} type="Fixed">
-            Taxes-Local
-          </MenuItem>
-          <MenuItem value={120} type="Fixed">
-            Taxes-Payroll
-          </MenuItem>
-          <MenuItem value={130} type="Variable">
-            Taxes-Sales
-          </MenuItem>
+          <MenuItem value={20}>Officer's Salaries</MenuItem>
+          <MenuItem value={30}>Payroll</MenuItem>
+          <MenuItem value={40}>Utilities</MenuItem>
+          <MenuItem value={50}>Dues and Subscriptions</MenuItem>
+          <MenuItem value={60}>Interest</MenuItem>
+          <MenuItem value={70}>Internet</MenuItem>
+          <MenuItem value={80}>Rent</MenuItem>
+          <MenuItem value={90}>Telephone Cell</MenuItem>
+          <MenuItem value={100}>Telephone Land</MenuItem>
+          <MenuItem value={110}>Taxes-Local</MenuItem>
+          <MenuItem value={120}>Taxes-Payroll</MenuItem>
+          <MenuItem value={130}>Taxes-Sales</MenuItem>
         </Select>
       </FormControl>
     </form>

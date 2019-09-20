@@ -14,12 +14,13 @@ import Button from "@material-ui/core/Button";
 const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
-    marginTop: theme.spacing(3),
-    overflowX: "auto",
-    padding: "20px"
+    marginTop: theme.spacing(3)
   },
   table: {
-    minWidth: 650
+    width: "100%"
+    // "@media 700px": {
+    //   width: "auto"
+    // }
   },
   button: {
     marginTop: "20px",
@@ -90,7 +91,11 @@ const BankTypesTable = props => {
                 <TableCell align="right">{transaction.name}</TableCell>
                 <TableCell align="right">${transaction.amount}</TableCell>
                 <TableCell align="center">
-                  <Dropdown expenseType={type} transactionKey={i} />
+                  <Dropdown
+                    expenseType={type}
+                    transactionKey={i}
+                    redfill={props.redfill}
+                  />
                 </TableCell>
               </TableRow>
             )

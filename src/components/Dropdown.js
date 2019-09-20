@@ -9,7 +9,8 @@ import InputBase from "@material-ui/core/InputBase";
 const BootstrapInput = withStyles(theme => ({
   root: {
     "label + &": {
-      marginTop: theme.spacing(3)
+      marginTop: theme.spacing(3),
+      width: "100%"
     }
   },
   input: {
@@ -49,6 +50,10 @@ const useStyles = makeStyles(theme => ({
   margin: {
     // margin: theme.spacing(1)
     margin: "0 auto"
+  },
+  redbox: {
+    borderRadius: 4,
+    boxShadow: "0 0 0 0.2rem rgba(242,86,86)"
   }
 }));
 
@@ -69,8 +74,13 @@ const CustomizedSelects = props => {
         <Select
           value={expenseName}
           onChange={handleChange}
+          // $`{}`
           input={
-            <BootstrapInput name={expenseType} id="expense-customized-select" />
+            <BootstrapInput
+              className={expenseName === "" ? classes.redbox : null}
+              name={expenseType}
+              id="expense-customized-select"
+            />
           }
         >
           {/* <MenuItem value="" /> */}

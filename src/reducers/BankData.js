@@ -91,12 +91,12 @@ const INITIAL_STATE = {
       amount: 12000.0,
       type: "expense"
     },
-    {
-      date: "01/30/2019",
-      name: "Payroll",
-      amount: 3500.0,
-      type: "expense"
-    },
+    // {
+    //   date: "01/30/2019",
+    //   name: "Payroll",
+    //   amount: 3500.0,
+    //   type: "expense"
+    // },
     {
       date: "01/30/2019",
       name: "PG&E",

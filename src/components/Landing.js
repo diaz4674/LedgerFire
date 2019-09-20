@@ -5,7 +5,6 @@ import { withRouter } from "react-router-dom";
 
 const Landing = props => {
   const [data, setData] = React.useState([]);
-  const [redfill, setredFill] = React.useState(false);
 
   const updateData = async newData => {
     if (data.length > 0) {
@@ -30,17 +29,14 @@ const Landing = props => {
       expense.type !== "deposit" ? filtered.push(expense) : null;
     });
     console.log(filtered.length + "and data is" + data.length);
-    data.length === filtered.length ? console.log("sent successul") : redFill();
-    console.log("please select type of expense");
+    data.length === filtered.length
+      ? console.log("sent successul")
+      : console.log("please select type of expense");
   };
 
   return (
     <>
-      <BankTypesTable
-        updateData={updateData}
-        sendData={sendData}
-        redfill={redfill}
-      />
+      <BankTypesTable updateData={updateData} sendData={sendData} />
     </>
   );
 };

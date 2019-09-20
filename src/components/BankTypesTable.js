@@ -91,11 +91,7 @@ const BankTypesTable = props => {
                 <TableCell align="right">{transaction.name}</TableCell>
                 <TableCell align="right">${transaction.amount}</TableCell>
                 <TableCell align="center">
-                  <Dropdown
-                    expenseType={type}
-                    transactionKey={i}
-                    redfill={props.redfill}
-                  />
+                  <Dropdown expenseType={type} transactionKey={i} />
                 </TableCell>
               </TableRow>
             )

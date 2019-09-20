@@ -77,10 +77,10 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "white"
   },
   loginButton: {
-    backgroundColor: "#ba78fe",
+    backgroundColor: "#0073cf",
     color: "white",
     "&:hover": {
-      backgroundColor: "#9a37ff"
+      backgroundColor: "#0c233e"
     }
   }
 }));
@@ -194,7 +194,7 @@ const Login = props => {
           <div className={classes.separator}>
             <span className={classes.orText}> or </span>
           </div>
-          <Link to="/signup" className={classes.signUp}>
+          <Link to="/register" className={classes.signUp}>
             <Button variant="contained" size="medium" color="inherent">
               Sign Up
             </Button>

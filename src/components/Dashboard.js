@@ -1,9 +1,9 @@
 import React from "react";
-import BankTypesTable from "./BankTypesTable";
+import BankTypesTable from "./Breakeven/BankTypesTable";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
-const Landing = props => {
+const Dashboard = props => {
   const [data, setData] = React.useState([]);
 
   const updateData = async newData => {
@@ -20,13 +20,10 @@ const Landing = props => {
     }
   };
 
-  const redFill = () => {
-    setredFill(true);
-  };
   const sendData = async e => {
     let filtered = [];
     await props.transactions.map(expense => {
-      expense.type !== "deposit" ? filtered.push(expense) : null;
+      return expense.type !== "deposit" ? filtered.push(expense) : null;
     });
     console.log(filtered.length + "and data is" + data.length);
     data.length === filtered.length
@@ -51,5 +48,5 @@ export default withRouter(
   connect(
     mapStateToProps
     //actions to be inputted here
-  )(Landing)
+  )(Dashboard)
 );

@@ -57,7 +57,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const CustomizedSelects = props => {
+const Dropdown = props => {
   const classes = useStyles();
   const [expenseName, setexpenseName] = React.useState("");
   const [expenseType, setexpenseType] = React.useState("");
@@ -103,4 +103,4 @@ const CustomizedSelects = props => {
   );
 };
 
-export default CustomizedSelects;
+export default Dropdown;

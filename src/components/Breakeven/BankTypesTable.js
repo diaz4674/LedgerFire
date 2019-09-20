@@ -71,40 +71,43 @@ const BankTypesTable = props => {
     }
   };
   return (
-    <Paper className={classes.root}>
-      <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Date</TableCell>
-            <TableCell align="right">Name</TableCell>
-            <TableCell align="right">Amount</TableCell>
-            <TableCell align="center">Expense Type</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {props.transactions.map((transaction, i) =>
-            transaction.type === "deposit" ? null : (
-              <TableRow key={i}>
-                <TableCell component="th" scope="row">
-                  {transaction.date}
-                </TableCell>
-                <TableCell align="right">{transaction.name}</TableCell>
-                <TableCell align="right">${transaction.amount}</TableCell>
-                <TableCell align="center">
-                  <Dropdown expenseType={type} transactionKey={i} />
-                </TableCell>
-              </TableRow>
-            )
-          )}
-        </TableBody>
-      </Table>
-      <Button
-        onClick={props.sendData}
-        variant="contained"
-        className={classes.button}
-      >
-        Update
-      </Button>
+    <Paper>
+      <h3> Please select what type of expenses these.</h3>
+      <Paper className={classes.root}>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell>Date</TableCell>
+              <TableCell align="right">Name</TableCell>
+              <TableCell align="right">Amount</TableCell>
+              <TableCell align="center">Expense Type</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {props.transactions.map((transaction, i) =>
+              transaction.type === "deposit" ? null : (
+                <TableRow key={i}>
+                  <TableCell component="th" scope="row">
+                    {transaction.date}
+                  </TableCell>
+                  <TableCell align="right">{transaction.name}</TableCell>
+                  <TableCell align="right">${transaction.amount}</TableCell>
+                  <TableCell align="center">
+                    <Dropdown expenseType={type} transactionKey={i} />
+                  </TableCell>
+                </TableRow>
+              )
+            )}
+          </TableBody>
+        </Table>
+        <Button
+          onClick={props.sendData}
+          variant="contained"
+          className={classes.button}
+        >
+          Update
+        </Button>
+      </Paper>
     </Paper>
   );
 };

@@ -9,15 +9,26 @@ import Paper from "@material-ui/core/Paper";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import Dropdown from "./Dropdown";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
     marginTop: theme.spacing(3),
-    overflowX: "auto"
+    overflowX: "auto",
+    padding: "20px"
   },
   table: {
     minWidth: 650
+  },
+  button: {
+    marginTop: "20px",
+    backgroundColor: "red",
+    color: "white",
+    "&:hover": {
+      opacity: 0.7,
+      backgroundColor: "blue"
+    }
   }
 }));
 
@@ -86,6 +97,13 @@ const BankTypesTable = props => {
           )}
         </TableBody>
       </Table>
+      <Button
+        onClick={props.sendData}
+        variant="contained"
+        className={classes.button}
+      >
+        Update
+      </Button>
     </Paper>
   );
 };

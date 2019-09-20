@@ -17,10 +17,13 @@ const Landing = props => {
     }
   };
 
-  console.log(data);
+  const sendData = e => {
+    console.log(data);
+  };
+
   return (
     <>
-      <BankTypesTable updateData={updateData} />
+      <BankTypesTable updateData={updateData} sendData={sendData} />
     </>
   );
 };

@@ -3,7 +3,7 @@ import BankTypesTable from "./BankTypesTable";
 
 const Landing = props => {
   const [data, setData] = React.useState([]);
-  const [activate, setactivate] = React.useState(0);
+  const [activate, setactivate] = React.useState(1);
 
   let add = () => {
     setactivate(1);

@@ -24,11 +24,11 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     marginTop: "20px",
-    backgroundColor: "red",
+    backgroundColor: "#0073cf",
     color: "white",
     "&:hover": {
       opacity: 0.7,
-      backgroundColor: "blue"
+      backgroundColor: "#0073cf"
     }
   }
 }));

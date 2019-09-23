@@ -4,11 +4,13 @@ import Dashboard from "./components/Dashboard";
 import Register from "./components/Landing/Register";
 import Login from "./components/Landing/Login";
 import "./App.css";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <Navbar />
         <Switch>
           <Route exact path="/" component={Dashboard} />
           {/* <Route path="/signup" component={SignUp} /> */}

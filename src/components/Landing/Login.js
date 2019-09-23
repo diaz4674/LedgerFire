@@ -205,13 +205,4 @@ const Login = props => {
   );
 };
 
-const mapStateToProps = state => ({});
-
-export default withRouter(
-  connect(
-    mapStateToProps,
-    {
-      // postLogin
-    }
-  )(Login)
-);
+export default withRouter(Login);

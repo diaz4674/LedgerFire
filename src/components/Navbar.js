@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 const useStyles = makeStyles(theme => ({
   nav: {
     padding: "0 15px",
-    backgroundColor: "#0073cf",
+    backgroundColor: "#E6F2FF",
     boxShadow: " 0px 3px 2px 2px rgba(0,0,0,.1)",
     display: "flex",
     justifyContent: "space-between",
@@ -62,10 +62,9 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     margin: "o auto",
-    color: "#0c233e",
+    color: "#0073cf",
     fontSize: "1rem",
     "&:hover": {
-      color: "#0c233e",
       cursor: "pointer"
     }
   },
@@ -97,8 +96,8 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     fontSize: ".75rem",
     "&:hover": {
-      backgroundColor: "#E6F2FF",
-      color: "#0073cf"
+      backgroundColor: "#E9E9E9",
+      color: "#0c233e"
     }
     // margin: "12px 16px"
   }

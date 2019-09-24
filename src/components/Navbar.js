@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { DropdownMenu } from "reactstrap";
 
 const useStyles = makeStyles(theme => ({
   nav: {
@@ -38,12 +36,13 @@ const useStyles = makeStyles(theme => ({
     color: "white",
     transition: ".5s ease",
     "&:hover": {
-      backgroundColor: "white",
-      color: "black"
+      backgroundColor: "#0073cf",
+      color: "white"
     }
   },
   title: {
-    color: "white"
+    color: "#0c233e",
+    cursor: "pointer"
   },
   leftNav: {
     display: "flex",
@@ -63,7 +62,8 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     margin: "o auto",
-    color: "white",
+    color: "#0c233e",
+    fontSize: "1rem",
     "&:hover": {
       color: "#0c233e",
       cursor: "pointer"
@@ -80,19 +80,27 @@ const useStyles = makeStyles(theme => ({
     minWidth: "160px",
     boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
     margin: "0",
-    padding: "12px 16px",
     listStyleType: "none",
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
-    cursor: "pointer"
+    paddingLeft: "0",
+    cursor: "pointer",
+    overflow: "hidden"
   },
   subText: {
+    display: "flex",
+    padding: "12px 16px",
+    width: "100%",
     textTransform: "uppercase",
     fontStyle: "normal",
     fontWeight: "bold",
-    fontSize: "18px",
-    padding: "7px 0"
+    fontSize: ".75rem",
+    "&:hover": {
+      backgroundColor: "#E6F2FF",
+      color: "#0073cf"
+    }
+    // margin: "12px 16px"
   }
 }));
 
@@ -127,12 +135,18 @@ const NavBar = props => {
     props.history.push("/register");
   };
 
+  const navigate = route => {
+    props.history.push(route);
+  };
+
   return (
     <div>
       <nav className={classes.nav}>
         {/* <Link to="/"> <Logo src = {} </Link> */}
         <div className={classes.leftNav}>
-          <h1 className={classes.title}>Ledgerfire</h1>
+          <h1 className={classes.title} onClick={() => navigate("/")}>
+            Ledgerfire
+          </h1>
           {isauth ? (
             <div className={classes.options}>
               <div
@@ -147,9 +161,24 @@ const NavBar = props => {
                 <h3 className={classes.text}>Dashboard</h3>
                 {isOpen ? (
                   <ul className={classes.subMenu}>
-                    <li className={classes.subText}>Breakeven</li>
-                    <li className={classes.subText}>Officer Salary</li>
-                    <li className={classes.subText}>Financial Growth</li>
+                    <li
+                      className={classes.subText}
+                      onClick={() => navigate("/")}
+                    >
+                      Breakeven
+                    </li>
+                    <li
+                      className={classes.subText}
+                      onClick={() => navigate("/construction")}
+                    >
+                      Officer Salary
+                    </li>
+                    <li
+                      className={classes.subText}
+                      onClick={() => navigate("/construction")}
+                    >
+                      Financial Growth
+                    </li>
                   </ul>
                 ) : null}
               </div>
@@ -165,9 +194,24 @@ const NavBar = props => {
                 <h3 className={classes.text}>Projections</h3>
                 {projectionsOpen ? (
                   <ul className={classes.subMenu}>
-                    <li className={classes.subText}>Hire An Employee</li>
-                    <li className={classes.subText}>Purchase Equipment</li>
-                    <li className={classes.subText}>Purchase Real Estate</li>
+                    <li
+                      className={classes.subText}
+                      onClick={() => navigate("/construction")}
+                    >
+                      Hire An Employee
+                    </li>
+                    <li
+                      className={classes.subText}
+                      onClick={() => navigate("/construction")}
+                    >
+                      Purchase Equipment
+                    </li>
+                    <li
+                      className={classes.subText}
+                      onClick={() => navigate("/construction")}
+                    >
+                      Purchase Real Estate
+                    </li>
                   </ul>
                 ) : null}
               </div>

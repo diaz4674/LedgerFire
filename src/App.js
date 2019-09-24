@@ -5,6 +5,7 @@ import Register from "./components/Landing/Register";
 import Login from "./components/Landing/Login";
 import "./App.css";
 import Navbar from "./components/Navbar";
+import UnderConstruction from "./components/UnderConstruction";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           {/* <Route path="/signup" component={SignUp} /> */}
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
+          <Route path="/construction" component={UnderConstruction} />
           {/* <Route path="/dashboard" component={Dashboard} /> */}
         </Switch>
       </Router>

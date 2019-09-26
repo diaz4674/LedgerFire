@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 const useStyles = makeStyles(theme => ({
   nav: {
     padding: "0 15px",
-    backgroundColor: "#00b9e6",
+    backgroundColor: "#1976d2",
     boxShadow: " 0px 3px 2px 2px rgba(0,0,0,.1)",
     display: "flex",
     justifyContent: "space-between",

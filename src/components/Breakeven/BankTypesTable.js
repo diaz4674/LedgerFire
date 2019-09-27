@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import Dropdown from "./Dropdown";
 import Button from "@material-ui/core/Button";
+import IncomeDropdown from "./IncomeDropdown";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,6 +36,15 @@ const useStyles = makeStyles(theme => ({
 
 const BankTypesTable = props => {
   const classes = useStyles();
+  const [noDupes, setnoDupes] = React.useState([]);
+
+  React.useEffect(() => {
+    props.transactions.map((transaction, i) =>
+      noDupes.includes(transaction)
+        ? null
+        : setnoDupes([...noDupes, transaction])
+    );
+  });
 
   const type = (type, key) => {
     if (
@@ -51,7 +61,8 @@ const BankTypesTable = props => {
         type: props.transactions[key].type,
         expense: "Variable"
       });
-    } else if (
+    }
+    if (
       (type === 50) |
       (type === 60) |
       (type === 70) |
@@ -61,6 +72,15 @@ const BankTypesTable = props => {
       (type === 110) |
       (type === 120)
     ) {
+      props.updateData({
+        date: props.transactions[key].date,
+        name: props.transactions[key].name,
+        amount: props.transactions[key].amount,
+        type: props.transactions[key].type,
+        expense: "Fixed"
+      });
+    }
+    if ((type === 150) | (type === 160)) {
       props.updateData({
         date: props.transactions[key].date,
         name: props.transactions[key].name,
@@ -84,20 +104,23 @@ const BankTypesTable = props => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {props.transactions.map((transaction, i) =>
-              transaction.type === "deposit" ? null : (
-                <TableRow key={i}>
-                  <TableCell component="th" scope="row">
-                    {transaction.date}
-                  </TableCell>
-                  <TableCell align="right">{transaction.name}</TableCell>
-                  <TableCell align="right">${transaction.amount}</TableCell>
-                  <TableCell align="center">
+            {noDupes.map((transaction, i) => (
+              // transaction.type === "deposit" ? null :
+              <TableRow key={i}>
+                <TableCell component="th" scope="row">
+                  {transaction.date}
+                </TableCell>
+                <TableCell align="right">{transaction.name}</TableCell>
+                <TableCell align="right">${transaction.amount}</TableCell>
+                <TableCell align="center">
+                  {transaction.type === "deposit" ? (
+                    <IncomeDropdown expenseType={type} transactionKey={i} />
+                  ) : (
                     <Dropdown expenseType={type} transactionKey={i} />
-                  </TableCell>
-                </TableRow>
-              )
-            )}
+                  )}
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
         <Button

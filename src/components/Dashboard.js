@@ -23,7 +23,9 @@ const Dashboard = props => {
   const sendData = async e => {
     let filtered = [];
     await props.transactions.map(expense => {
-      return expense.type !== "deposit" ? filtered.push(expense) : null;
+      // return expense.type !== "deposit" ? 
+      filtered.push(expense)
+      //  : null;
     });
     console.log(filtered.length + "and data is" + data.length);
     data.length === filtered.length

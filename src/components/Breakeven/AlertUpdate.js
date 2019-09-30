@@ -11,18 +11,24 @@ import { withRouter } from "react-router";
 
 const useStyles = makeStyles({
   card: {
-    maxWidth: "60%",
+    width: "60%",
     margin: "25px auto",
     padding: "15px",
     display: "flex",
     flexDirection: "column",
     alignItems: "center"
   },
-  img: {
-    minWidth: 200,
+  titleContainer: {
     display: "flex",
-    flexDirection: "column",
+    justifyContent: "center",
     alignItems: "center"
+  },
+  img: {
+    margin: "o auto",
+    display: "flex",
+    justifyContent: "center",
+    width: "5rem",
+    padding: "10px"
   }
 });
 
@@ -32,18 +38,18 @@ const AlertUpdate = props => {
   return (
     <Card className={classes.card}>
       <CardActionArea>
-        <CardMedia
-          component="img"
-          alt="Alert"
-          height=""
-          className={classes.img}
-          image="https://i0.wp.com/morrisseytravel.com/wp-content/uploads/2017/03/alert-icon.png?fit=288%2C288&ssl=1"
-          title="Contemplative Reptile"
-        />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Update some data
-          </Typography>
+          <div className={classes.titleContainer}>
+            <img
+              component="img"
+              alt="Alert"
+              className={classes.img}
+              src="https://www.jacaranda.com.au/wp-content/uploads/2016/02/monitorNEW.jpg"
+            />
+            <Typography gutterBottom variant="h5" component="h2">
+              Update some data
+            </Typography>
+          </div>
           <Typography variant="body2" color="textSecondary" component="p">
             In order to crunch our numbers to provide you the most accurate
             numbers, please update some information.

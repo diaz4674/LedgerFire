@@ -6,6 +6,7 @@ import Login from "./components/Landing/Login";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import UnderConstruction from "./components/UnderConstruction";
+import VerifyExpenses from "./components/Breakeven/BankTypesTable";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/" component={Dashboard} />
+          <Route exact path="/verifyexpenses" component={VerifyExpenses} />
           {/* <Route path="/signup" component={SignUp} /> */}
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />

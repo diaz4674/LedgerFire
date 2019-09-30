@@ -2,6 +2,7 @@ import React from "react";
 import BankTypesTable from "./Breakeven/BankTypesTable";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import AlertUpdate from "./Breakeven/AlertUpdate";
 
 const Dashboard = props => {
   const [data, setData] = React.useState([]);
@@ -23,8 +24,8 @@ const Dashboard = props => {
   const sendData = async e => {
     let filtered = [];
     await props.transactions.map(expense => {
-      // return expense.type !== "deposit" ? 
-      filtered.push(expense)
+      // return expense.type !== "deposit" ?
+      filtered.push(expense);
       //  : null;
     });
     console.log(filtered.length + "and data is" + data.length);
@@ -33,11 +34,7 @@ const Dashboard = props => {
       : console.log("please select type of expense");
   };
 
-  return (
-    <>
-      <BankTypesTable updateData={updateData} sendData={sendData} />
-    </>
-  );
+  return <>{props.transactions.length > 0 ? <AlertUpdate /> : "Graph"}</>;
 };
 
 const mapStateToProps = state => {

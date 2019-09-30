@@ -37,14 +37,16 @@ const useStyles = makeStyles(theme => ({
 const BankTypesTable = props => {
   const classes = useStyles();
   const [noDupes, setnoDupes] = React.useState([]);
+  const [newArray, setnewArray] = React.useState([]);
 
-  React.useEffect(() => {
-    props.transactions.map((transaction, i) =>
-      noDupes.includes(transaction)
-        ? null
-        : setnoDupes([...noDupes, transaction])
-    );
-  });
+  // React.useEffect(() => {
+  //   props.transactions.map(transaction => {
+  //     setnoDupes([...noDupes, transaction]);
+  //     transaction.name in noDupes ? null : setnewArray([...newArray, newArray]);
+  //   });
+
+  //   // console.log(newArray);
+  // });
 
   const type = (type, key) => {
     if (
@@ -104,7 +106,7 @@ const BankTypesTable = props => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {noDupes.map((transaction, i) => (
+            {props.transactions.map((transaction, i) => (
               // transaction.type === "deposit" ? null :
               <TableRow key={i}>
                 <TableCell component="th" scope="row">

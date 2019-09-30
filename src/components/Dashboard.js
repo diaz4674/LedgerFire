@@ -1,5 +1,5 @@
 import React from "react";
-import BankTypesTable from "./Breakeven/BankTypesTable";
+import Breakeven from "./Breakeven/Breakeven";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import AlertUpdate from "./Breakeven/AlertUpdate";
@@ -34,7 +34,7 @@ const Dashboard = props => {
       : console.log("please select type of expense");
   };
 
-  return <>{props.transactions.length > 0 ? <AlertUpdate /> : "Graph"}</>;
+  return <>{props.transactions.length > 0 ? <AlertUpdate /> : <Breakeven />}</>;
 };
 
 const mapStateToProps = state => {

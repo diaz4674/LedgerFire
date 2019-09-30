@@ -1,6 +1,5 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
 import BreakevenGraph from "./BreakevenGraph";
 
 const useStyles = makeStyles(theme => ({
@@ -16,9 +15,9 @@ const Breakeven = () => {
 
   return (
     <div>
-      <Paper className={classes.root}>
+      <div className={classes.root}>
         <BreakevenGraph variable={variable} fixed={fixed} />
-      </Paper>
+      </div>
     </div>
   );
 };

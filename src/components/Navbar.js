@@ -85,7 +85,8 @@ const useStyles = makeStyles(theme => ({
     alignItems: "flex-start",
     paddingLeft: "0",
     cursor: "pointer",
-    overflow: "hidden"
+    overflow: "hidden",
+    zIndex: "1"
   },
   subText: {
     display: "flex",

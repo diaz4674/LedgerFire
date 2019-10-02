@@ -11,7 +11,7 @@ import { withRouter } from "react-router";
 
 const useStyles = makeStyles({
   card: {
-    width: "60%",
+    width: "400px",
     margin: "25px auto",
     padding: "15px",
     display: "flex",
@@ -37,7 +37,7 @@ const AlertUpdate = props => {
 
   return (
     <Card className={classes.card}>
-      <CardActionArea>
+      <div>
         <CardContent>
           <div className={classes.titleContainer}>
             <img
@@ -47,15 +47,15 @@ const AlertUpdate = props => {
               src="https://www.jacaranda.com.au/wp-content/uploads/2016/02/monitorNEW.jpg"
             />
             <Typography gutterBottom variant="h5" component="h2">
-              Update some data
+              Update some Info
             </Typography>
           </div>
           <Typography variant="body2" color="textSecondary" component="p">
             In order to crunch our numbers to provide you the most accurate
-            numbers, please update some information.
+            information, please update some data for us.
           </Typography>
         </CardContent>
-      </CardActionArea>
+      </div>
       <CardActions>
         <Button
           size="small"

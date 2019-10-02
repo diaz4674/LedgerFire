@@ -15,10 +15,12 @@ import IncomeDropdown from "./IncomeDropdown";
 const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
+    padding: "25px 0px",
     marginTop: theme.spacing(3)
   },
   table: {
-    width: "100%"
+    width: "100%",
+    paddingRIght: "0px"
     // "@media 700px": {
     //   width: "auto"
     // }
@@ -93,46 +95,44 @@ const BankTypesTable = props => {
     }
   };
   return (
-    <Paper>
-      <h3> Please select what type of expenses these.</h3>
-      <Paper className={classes.root}>
-        <Table className={classes.table}>
-          <TableHead>
-            <TableRow>
-              <TableCell>Date</TableCell>
-              <TableCell align="right">Name</TableCell>
-              <TableCell align="right">Amount</TableCell>
-              <TableCell align="center">Expense Type</TableCell>
+    <Paper className={classes.root}>
+      <h3> Please select what type of expenses these are.</h3>
+      <Table className={classes.table}>
+        <TableHead>
+          <TableRow>
+            <TableCell>Date</TableCell>
+            <TableCell align="right">Name</TableCell>
+            <TableCell align="right">Amount</TableCell>
+            <TableCell align="center">Expense Type</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {props.transactions.map((transaction, i) => (
+            // transaction.type === "deposit" ? null :
+            <TableRow key={i}>
+              <TableCell component="th" scope="row">
+                {transaction.date}
+              </TableCell>
+              <TableCell align="right">{transaction.name}</TableCell>
+              <TableCell align="right">${transaction.amount}</TableCell>
+              <TableCell align="center">
+                {transaction.type === "deposit" ? (
+                  <IncomeDropdown expenseType={type} transactionKey={i} />
+                ) : (
+                  <Dropdown expenseType={type} transactionKey={i} />
+                )}
+              </TableCell>
             </TableRow>
-          </TableHead>
-          <TableBody>
-            {props.transactions.map((transaction, i) => (
-              // transaction.type === "deposit" ? null :
-              <TableRow key={i}>
-                <TableCell component="th" scope="row">
-                  {transaction.date}
-                </TableCell>
-                <TableCell align="right">{transaction.name}</TableCell>
-                <TableCell align="right">${transaction.amount}</TableCell>
-                <TableCell align="center">
-                  {transaction.type === "deposit" ? (
-                    <IncomeDropdown expenseType={type} transactionKey={i} />
-                  ) : (
-                    <Dropdown expenseType={type} transactionKey={i} />
-                  )}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-        <Button
-          onClick={props.sendData}
-          variant="contained"
-          className={classes.button}
-        >
-          Update
-        </Button>
-      </Paper>
+          ))}
+        </TableBody>
+      </Table>
+      <Button
+        onClick={props.sendData}
+        variant="contained"
+        className={classes.button}
+      >
+        Update
+      </Button>
     </Paper>
   );
 };

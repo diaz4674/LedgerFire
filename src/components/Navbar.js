@@ -11,7 +11,8 @@ const useStyles = makeStyles(theme => ({
     boxShadow: " 0px 3px 2px 2px rgba(0,0,0,.1)",
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
+    marginBottom: "45px"
   },
   loginButton: {
     backgroundColor: "#0c233e",

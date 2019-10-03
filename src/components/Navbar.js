@@ -112,7 +112,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     justifyContent: "space-between",
     padding: "12px 16px",
-    width: "80%",
+    width: "85%",
     textTransform: "uppercase",
     fontStyle: "normal",
     fontWeight: "bold",

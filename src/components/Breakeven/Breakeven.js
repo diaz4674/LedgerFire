@@ -48,6 +48,7 @@ const Breakeven = () => {
         <h4 className={classes.Breakeven}> Breakeven </h4>
         <p className={classes.number}> {breakeven.number} </p>
       </div>
+
       <Button
         variant="contained"
         size="medium"

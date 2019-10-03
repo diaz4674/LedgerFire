@@ -3,6 +3,9 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import AccountBalanceTwoToneIcon from "@material-ui/icons/AccountBalanceTwoTone";
+import AttachMoneyTwoToneIcon from "@material-ui/icons/AttachMoneyTwoTone";
+import TrendingUpTwoToneIcon from "@material-ui/icons/TrendingUpTwoTone";
 
 const useStyles = makeStyles(theme => ({
   nav: {
@@ -89,14 +92,31 @@ const useStyles = makeStyles(theme => ({
     overflow: "hidden",
     zIndex: "1"
   },
-  subText: {
+  FinancialGrowth: {
     display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-start",
     padding: "12px 16px",
     width: "100%",
     textTransform: "uppercase",
     fontStyle: "normal",
     fontWeight: "bold",
-    fontSize: ".75rem",
+    fontSize: ".9rem",
+    "&:hover": {
+      backgroundColor: "#E9E9E9",
+      color: "#0073cf"
+    }
+  },
+  subText: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: "12px 16px",
+    width: "80%",
+    textTransform: "uppercase",
+    fontStyle: "normal",
+    fontWeight: "bold",
+    fontSize: ".9rem",
     "&:hover": {
       backgroundColor: "#E9E9E9",
       color: "#0073cf"
@@ -167,18 +187,22 @@ const NavBar = props => {
                       onClick={() => navigate("/")}
                     >
                       Breakeven
+                      <AccountBalanceTwoToneIcon />
                     </li>
+
                     <li
                       className={classes.subText}
                       onClick={() => navigate("/construction")}
                     >
                       Officer Salary
+                      <AttachMoneyTwoToneIcon />
                     </li>
                     <li
-                      className={classes.subText}
+                      className={classes.FinancialGrowth}
                       onClick={() => navigate("/construction")}
                     >
                       Financial Growth
+                      <TrendingUpTwoToneIcon />
                     </li>
                   </ul>
                 ) : null}

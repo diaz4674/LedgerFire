@@ -167,6 +167,7 @@ const Login = props => {
               label="Password"
               value={values.password}
               onChange={handleChange("password")}
+              onKeyDown={e => (e.keyCode === 13 ? loginHandler() : null)}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">

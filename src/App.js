@@ -7,7 +7,6 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import UnderConstruction from "./components/UnderConstruction";
 import VerifyExpenses from "./components/Breakeven/BankTypesTable";
-
 function App() {
   return (
     <div className="App">

@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import AccountBalanceTwoToneIcon from "@material-ui/icons/AccountBalanceTwoTone";
 import AttachMoneyTwoToneIcon from "@material-ui/icons/AttachMoneyTwoTone";
 import TrendingUpTwoToneIcon from "@material-ui/icons/TrendingUpTwoTone";
+import { isAuthenticated } from "../actions";
 
 const useStyles = makeStyles(theme => ({
   nav: {
@@ -127,23 +128,27 @@ const useStyles = makeStyles(theme => ({
 
 const NavBar = props => {
   const classes = useStyles();
-  const [isauth, setisauth] = useState(true);
+  const [isauth, setisauth] = useState();
   const [isOpen, updateIsOpen] = useState(false);
   const [projectionsOpen, updateProjectionsOpen] = useState(false);
-  React.useEffect(() => {
-    // if (localStorage.getItem("token") === true) {
-    //   setisauth(!isauth);
-    // }
-  }, []);
 
   const toggleNav = () => {
     // console.log('hi')
     setisauth(!isauth);
   };
 
+  React.useEffect(() => {
+    // Update the document title using the browser API
+    if ("token" in localStorage) {
+      setisauth(true);
+    }
+  }, [props.isAuth]);
+
   const logoutHandler = () => {
+    props.isAuthenticated(false);
     localStorage.removeItem("token");
-    props.history.push("/");
+    setisauth(false);
+    props.history.push("/login");
   };
 
   const loginHandler = () => {
@@ -160,12 +165,16 @@ const NavBar = props => {
     props.history.push(route);
   };
 
+  const dash = route => {
+    isauth ? props.history.push("/") : props.history.push("/login");
+  };
+
   return (
     <div>
       <nav className={classes.nav}>
         {/* <Link to="/"> <Logo src = {} </Link> */}
         <div className={classes.leftNav}>
-          <h1 className={classes.title} onClick={() => navigate("/")}>
+          <h1 className={classes.title} onClick={() => dash}>
             Ledgerfire
           </h1>
           {isauth ? (
@@ -250,7 +259,7 @@ const NavBar = props => {
               variant="contained"
               size="medium"
               className={classes.logoutButton}
-              onClick={toggleNav}
+              onClick={logoutHandler}
             >
               Logout
             </Button>
@@ -284,11 +293,13 @@ const NavBar = props => {
   );
 };
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  isAuth: state.userReducer.isAuth
+});
 
 export default withRouter(
   connect(
     mapStateToProps,
-    {}
+    { isAuthenticated }
   )(NavBar)
 );

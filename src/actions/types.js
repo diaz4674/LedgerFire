@@ -3,3 +3,4 @@
 // export const LOGIN_USER_SUCCESS = 'login_user-success'
 // export const LOGIN_USER_FAIL = 'login_user_fail'
 // export const LOGIN_USER = 'login_user'
+export const AUTHENTICATE_SUCCESS = "AUTHENTICATE_SUCCESS";

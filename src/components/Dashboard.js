@@ -21,6 +21,10 @@ const Dashboard = props => {
     }
   };
 
+  React.useEffect(() => {
+    console.log(props.isAuth);
+  }, []);
+
   const sendData = async e => {
     let filtered = [];
     await props.transactions.map(expense => {
@@ -39,6 +43,7 @@ const Dashboard = props => {
 
 const mapStateToProps = state => {
   return {
+    isAuth: state.userReducer.isAuth,
     transactions: state.BankData.transactions
   };
 };

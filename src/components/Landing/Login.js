@@ -14,7 +14,7 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-// import { postLogin } from "../actions";
+import { isAuthenticated } from "../../actions";
 import axios from "axios";
 // import OnboardNav from "./Navbars/OnboardNav";
 
@@ -118,12 +118,13 @@ const Login = props => {
     };
     await axios
       //sends a post request to the login endpoint to authenticate user
-      .post("https://be-bookmark.herokuapp.com/login", loginCreds)
+      .post("https://ledgerfire.herokuapp.com/login", loginCreds)
       .then(res => {
         //set's the token to the local storage
         localStorage.setItem("token", res.data.token);
+        props.isAuthenticated(true);
         //then pushes user to their dashboard
-        props.history.push("/dashboard");
+        props.history.push("/");
       })
       .catch(err => alert("Sorry, cannot find user, or wrong password/email"));
   };
@@ -205,4 +206,11 @@ const Login = props => {
   );
 };
 
-export default withRouter(Login);
+const mapStateToProps = state => ({});
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { isAuthenticated }
+  )(Login)
+);

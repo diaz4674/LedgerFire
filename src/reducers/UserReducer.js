@@ -1,13 +1,16 @@
+import { AUTHENTICATE_SUCCESS } from "../actions/types";
+
 const INITIAL_STATE = {
   userName: "",
   email: "",
-  password: ""
+  password: "",
+  isAuth: ""
 };
 
 export default function userReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-    // case EMAIL_CHANGED:
-    //     return {...state, email: action.payload};
+    case AUTHENTICATE_SUCCESS:
+      return { ...state, isAuth: action.payload };
     // case PASSWORD_CHANGED:
     //     return {...state, password: action.payload}
     // case LOGIN_USER:

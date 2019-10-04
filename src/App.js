@@ -14,11 +14,11 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={Dashboard} />
+          <Route exact path="/" component={() => <Dashboard />} />
           <Route exact path="/verifyexpenses" component={VerifyExpenses} />
           {/* <Route path="/signup" component={SignUp} /> */}
           <Route path="/register" component={Register} />
-          <Route path="/login" component={Login} />
+          <Route path="/login" component={() => <Login />} />
           <Route path="/construction" component={UnderConstruction} />
           {/* <Route path="/dashboard" component={Dashboard} /> */}
         </Switch>

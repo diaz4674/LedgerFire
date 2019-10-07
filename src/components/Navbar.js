@@ -11,7 +11,7 @@ import { isAuthenticated } from "../actions";
 const useStyles = makeStyles(theme => ({
   nav: {
     padding: "0 15px",
-    backgroundColor: "#1976d2",
+    backgroundColor: "#3390C5",
     boxShadow: " 0px 3px 2px 2px rgba(0,0,0,.1)",
     display: "flex",
     justifyContent: "space-between",
@@ -254,16 +254,19 @@ const NavBar = props => {
         </div>
 
         {isauth ? (
-          <div>
-            <Button
-              variant="contained"
-              size="medium"
-              className={classes.logoutButton}
-              onClick={logoutHandler}
-            >
-              Logout
-            </Button>
-          </div>
+          <>
+            <div>{/* <p> {props.isAuth.UserReducer.username}</p> */}</div>
+            <div>
+              <Button
+                variant="contained"
+                size="medium"
+                className={classes.logoutButton}
+                onClick={logoutHandler}
+              >
+                Logout
+              </Button>
+            </div>
+          </>
         ) : (
           <div className={classes.rightNav}>
             <div className={classes.rightButtons}>
@@ -294,7 +297,8 @@ const NavBar = props => {
 };
 
 const mapStateToProps = state => ({
-  isAuth: state.userReducer.isAuth
+  isAuth: state.userReducer.isAuth,
+  user: state.userReducer.user
 });
 
 export default withRouter(

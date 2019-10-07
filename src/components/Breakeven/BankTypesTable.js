@@ -35,10 +35,12 @@ const useStyles = makeStyles(theme => ({
     }
   },
   blue: {
-    color: "blue"
+    color: "#3390C5",
+    fontWeight: "bold"
   },
   red: {
-    color: "red"
+    color: "red",
+    fontWeight: "bold"
   }
 }));
 
@@ -126,7 +128,8 @@ const BankTypesTable = props => {
                   transaction.type === "deposit" ? classes.blue : classes.red
                 }
               >
-                ${transaction.amount}
+                {transaction.type === "deposit" ? "+" : "-"}$
+                {transaction.amount}
               </TableCell>
               <TableCell align="center">
                 {transaction.type === "deposit" ? (

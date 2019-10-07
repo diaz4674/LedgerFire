@@ -14,7 +14,7 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { isAuthenticated } from "../../actions";
+import { isAuthenticated, sendUserData } from "../../actions";
 import axios from "axios";
 // import OnboardNav from "./Navbars/OnboardNav";
 
@@ -123,6 +123,7 @@ const Login = props => {
         //set's the token to the local storage
         localStorage.setItem("token", res.data.token);
         props.isAuthenticated(true);
+        props.sendUserData(res.data);
         //then pushes user to their dashboard
         props.history.push("/");
       })
@@ -212,6 +213,9 @@ const mapStateToProps = state => ({});
 export default withRouter(
   connect(
     mapStateToProps,
-    { isAuthenticated }
+    {
+      isAuthenticated,
+      sendUserData
+    }
   )(Login)
 );

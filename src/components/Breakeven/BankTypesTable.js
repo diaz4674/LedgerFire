@@ -33,6 +33,12 @@ const useStyles = makeStyles(theme => ({
       opacity: 0.7,
       backgroundColor: "#0073cf"
     }
+  },
+  blue: {
+    color: "blue"
+  },
+  red: {
+    color: "red"
   }
 }));
 
@@ -114,7 +120,14 @@ const BankTypesTable = props => {
                 {transaction.date}
               </TableCell>
               <TableCell align="right">{transaction.name}</TableCell>
-              <TableCell align="right">${transaction.amount}</TableCell>
+              <TableCell
+                align="right"
+                className={
+                  transaction.type === "deposit" ? classes.blue : classes.red
+                }
+              >
+                ${transaction.amount}
+              </TableCell>
               <TableCell align="center">
                 {transaction.type === "deposit" ? (
                   <IncomeDropdown expenseType={type} transactionKey={i} />

@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import AccountBalanceTwoToneIcon from "@material-ui/icons/AccountBalanceTwoTone";
 import AttachMoneyTwoToneIcon from "@material-ui/icons/AttachMoneyTwoTone";
 import TrendingUpTwoToneIcon from "@material-ui/icons/TrendingUpTwoTone";
+import AccountCircleSharpIcon from "@material-ui/icons/AccountCircleSharp";
 import { isAuthenticated } from "../actions";
 
 const useStyles = makeStyles(theme => ({
@@ -40,6 +41,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#0c233e",
     color: "white",
     transition: ".5s ease",
+    marginLeft: "10px",
     "&:hover": {
       backgroundColor: "#5b5f66",
       color: "white"
@@ -123,6 +125,29 @@ const useStyles = makeStyles(theme => ({
       color: "#0073cf"
     }
     // margin: "12px 16px"
+  },
+  NavRight: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  userContainer: {
+    width: "100%",
+    color: "white",
+    transition: ".5s ease",
+    marginLeft: "10px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    textTransform: "uppercase",
+    fontStyle: "normal",
+    fontWeight: "bold",
+    fontSize: "1rem",
+    "&:hover": {
+      backgroundColor: "#5b5f66",
+      color: "white",
+      cursor: "pointer"
+    }
   }
 }));
 
@@ -254,8 +279,12 @@ const NavBar = props => {
         </div>
 
         {isauth ? (
-          <>
-            <div>{/* <p> {props.isAuth.UserReducer.username}</p> */}</div>
+          <div className={classes.NavRight}>
+            <div className={classes.userContainer}>
+              <AccountCircleSharpIcon />
+              <p> Steve </p>
+              {/* <p> {props.user.username}</p> */}
+            </div>
             <div>
               <Button
                 variant="contained"
@@ -266,7 +295,7 @@ const NavBar = props => {
                 Logout
               </Button>
             </div>
-          </>
+          </div>
         ) : (
           <div className={classes.rightNav}>
             <div className={classes.rightButtons}>

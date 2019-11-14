@@ -7,15 +7,18 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import UnderConstruction from "./components/UnderConstruction";
 import VerifyExpenses from "./components/Breakeven/BankTypesTable";
+import ValidateUser from "./components/ValidateUser";
+
 function App() {
   return (
     <div className="App">
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={() => <Dashboard />} />
+          <Route exact path="/" component={() => <ValidateUser />} />
           <Route exact path="/verifyexpenses" component={VerifyExpenses} />
           {/* <Route path="/signup" component={SignUp} /> */}
+          <Route path="/dashboard" component={() => <Dashboard />} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={() => <Login />} />
           <Route path="/construction" component={UnderConstruction} />

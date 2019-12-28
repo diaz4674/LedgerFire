@@ -6,7 +6,7 @@ import Login from "./components/Landing/Login";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import UnderConstruction from "./components/UnderConstruction";
-import VerifyExpenses from "./components/Breakeven/BankTypesTable";
+import VerifyExpenses from "./components/Breakeven/SemanticTables";
 import ValidateUser from "./components/ValidateUser";
 
 function App() {

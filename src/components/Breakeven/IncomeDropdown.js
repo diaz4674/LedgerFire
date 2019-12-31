@@ -71,18 +71,12 @@ const IncomeDropdown = props => {
     <form className={classes.root} autoComplete="off">
       <FormControl className={classes.margin}>
         <InputLabel htmlFor="expense-type">Type</InputLabel>
-        <Select
-          value={expenseName}
-          onChange={handleChange}
-          // $`{}`
-          input={
-            <BootstrapInput
-              className={expenseName === "" ? classes.redbox : null}
-              name={expenseType}
-              id="expense-customized-select"
-            />
-          }
-        >
+        <Dropdown
+                  placeholder="Select Expense Type"
+                  scrolling
+                  closeOnEscape
+                  options={getOptions}
+          />
           {/* <MenuItem value="" /> */}
           <MenuItem value={150}>Commission</MenuItem>
           <MenuItem value={160}>Sales</MenuItem>

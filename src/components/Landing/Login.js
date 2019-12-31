@@ -16,6 +16,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { isAuthenticated, sendUserData } from "../../actions";
 import axios from "axios";
+import Loading from "../common/Loading";
 // import OnboardNav from "./Navbars/OnboardNav";
 
 const useStyles = makeStyles(theme => ({
@@ -95,7 +96,8 @@ const Login = props => {
     password: "",
     weight: "",
     weightRange: "",
-    showPassword: false
+    showPassword: false,
+    loading: false
   });
 
   const handleChange = prop => e => {
@@ -111,7 +113,7 @@ const Login = props => {
   const loginHandler = async e => {
     //removes token from the local storage
     localStorage.removeItem("token");
-
+    setValues({ ...values, loading: true });
     const loginCreds = {
       email: values.email,
       password: values.password
@@ -127,62 +129,75 @@ const Login = props => {
         //then pushes user to their dashboard
         props.history.push("/");
       })
-      .catch(err => alert("Sorry, cannot find user, or wrong password/email"));
+      .catch(err => {
+        setValues({ ...values, loading: false });
+        alert("Sorry, cannot find user, or wrong password/email");
+      });
   };
 
   return (
-    <div className={classes.test}>
+    <>
       {/* <OnboardNav /> */}
       <div className={classes.loginContainer}>
         <Card className={classes.card}>
           <CardContent>
-            <Typography
-              variant="h5"
-              component="h2"
-              className={classes.container}
-            >
-              Login
-            </Typography>
-            <TextField
-              id="filled-dense"
-              label="Enter Email"
-              className={clsx(
-                classes.margin,
-                classes.textField,
-                classes.container
-              )}
-              margin="dense"
-              variant="filled"
-              value={values.email}
-              onChange={handleChange("email")}
-            />
-            <TextField
-              id="filled-adornment-password"
-              className={clsx(
-                classes.margin,
-                classes.textField,
-                classes.container
-              )}
-              variant="filled"
-              type={values.showPassword ? "text" : "password"}
-              label="Password"
-              value={values.password}
-              onChange={handleChange("password")}
-              onKeyDown={e => (e.keyCode === 13 ? loginHandler() : null)}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton
-                      edge="end"
-                      aria-label="Toggle password visibility"
-                      onClick={handleClickShowPassword}
-                    >
-                      {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                )
-              }}
-            />
+            {values.loading ? (
+              <Loading />
+            ) : (
+              <>
+                <Typography
+                  variant="h5"
+                  component="h2"
+                  className={classes.container}
+                >
+                  Login
+                </Typography>
+                <TextField
+                  id="filled-dense"
+                  label="Enter Email"
+                  className={clsx(
+                    classes.margin,
+                    classes.textField,
+                    classes.container
+                  )}
+                  margin="dense"
+                  variant="filled"
+                  value={values.email}
+                  onChange={handleChange("email")}
+                />
+                <TextField
+                  id="filled-adornment-password"
+                  className={clsx(
+                    classes.margin,
+                    classes.textField,
+                    classes.container
+                  )}
+                  variant="filled"
+                  type={values.showPassword ? "text" : "password"}
+                  label="Password"
+                  value={values.password}
+                  onChange={handleChange("password")}
+                  onKeyDown={e => (e.keyCode === 13 ? loginHandler() : null)}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          edge="end"
+                          aria-label="Toggle password visibility"
+                          onClick={handleClickShowPassword}
+                        >
+                          {values.showPassword ? (
+                            <VisibilityOff />
+                          ) : (
+                            <Visibility />
+                          )}
+                        </IconButton>
+                      </InputAdornment>
+                    )
+                  }}
+                />
+              </>
+            )}
           </CardContent>
           <CardActions>
             <Button
@@ -191,7 +206,7 @@ const Login = props => {
               className={classes.loginButton}
               onClick={e => loginHandler()}
             >
-              Login
+              {values.loading ? <p>Loading</p> : <p>Login</p>}
             </Button>
           </CardActions>
           <div className={classes.separator}>
@@ -204,7 +219,7 @@ const Login = props => {
           </Link>
         </Card>
       </div>
-    </div>
+    </>
   );
 };
 

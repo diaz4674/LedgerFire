@@ -68,9 +68,10 @@ const useStyles = makeStyles(theme => ({
   text: {
     display: "flex",
     alignItems: "center",
-    margin: "o auto",
+    margin: "0 auto",
     color: "white",
-    fontSize: "1rem",
+    textTransform: "uppercase",
+    fontSize: "1.1rem",
     "&:hover": {
       cursor: "pointer"
     }
@@ -95,7 +96,7 @@ const useStyles = makeStyles(theme => ({
     overflow: "hidden",
     zIndex: "1"
   },
-  FinancialGrowth: {
+  subText: {
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-start",
@@ -109,22 +110,6 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: "#E9E9E9",
       color: "#0073cf"
     }
-  },
-  subText: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: "12px 16px",
-    width: "85%",
-    textTransform: "uppercase",
-    fontStyle: "normal",
-    fontWeight: "bold",
-    fontSize: ".9rem",
-    "&:hover": {
-      backgroundColor: "#E9E9E9",
-      color: "#0073cf"
-    }
-    // margin: "12px 16px"
   },
   NavRight: {
     display: "flex",
@@ -232,7 +217,7 @@ const NavBar = props => {
                       <AttachMoneyTwoToneIcon />
                     </li>
                     <li
-                      className={classes.FinancialGrowth}
+                      className={classes.subText}
                       onClick={() => navigate("/construction")}
                     >
                       Financial Growth

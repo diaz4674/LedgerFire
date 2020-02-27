@@ -7,7 +7,7 @@ const container = {
   margin: "0 auto",
   position: "relative"
 };
-class App extends Component {
+class BreakevenGraph extends Component {
   constructor(props) {
     super(props);
 
@@ -50,4 +50,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default BreakevenGraph;

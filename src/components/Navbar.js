@@ -11,7 +11,7 @@ import { isAuthenticated } from "../actions";
 
 const useStyles = makeStyles(theme => ({
   nav: {
-    padding: "0 15px",
+    padding: "15px",
     backgroundColor: "#3390C5",
     boxShadow: " 0px 3px 2px 2px rgba(0,0,0,.1)",
     display: "flex",
@@ -49,7 +49,8 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     color: "white",
-    cursor: "pointer"
+    cursor: "pointer",
+    margin: 0
   },
   leftNav: {
     display: "flex",
